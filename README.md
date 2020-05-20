@@ -1,6 +1,6 @@
-# b0ssTheASM 💉
+# b0ssTheASM
 
-## x86 (32-bit)
+## ⚔️86 (32-bit)
 
 ### Compiling ASM in x86
 ```
