@@ -34,5 +34,9 @@ $ cat /usr/include/i386-linux-gnu/asm/unistd_32.h
 > x/8xb &data
 > disassemble $eip,+5
 > end
-```
+
+* Display (Show the following outpus w/o hooking)
+(gdb) display/x $eax
+(gdb) display/x $ebx
+(gdb) display/x $ecx
 ```
