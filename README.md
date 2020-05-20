@@ -12,6 +12,7 @@ $ ld -o <file> <file>.o
 $ cat /usr/include/i386-linux-gnu/asm/unistd_32.h 
 ```
 <br />
+
 ## GDB
 ### Finding Entry Points
 ```
