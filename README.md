@@ -1,5 +1,3 @@
-# b0ssTheASM
-
 <p align="center">
   <img src="https://github.com/bigb0sss/b0ssTheASM/blob/master/asm.png">
 </p>
