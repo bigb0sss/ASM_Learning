@@ -1,4 +1,6 @@
-# b0ssTheASM 🥂
+# b0ssTheASM
+
+<p><img src=/></p>
 
 ## x86 (32-bit)
 
