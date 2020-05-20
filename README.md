@@ -10,24 +10,24 @@ $ nasm -f elf32 -o <file>.o <file>.asm
 $ ld -o <file> <file>.o
 ```
 ### Finding Syscalls
-```
+```bash
 $ cat /usr/include/i386-linux-gnu/asm/unistd_32.h 
 ```
 <br />
 
 ## GDB
 ### Finding Entry Points
-```
+```bash
 (gdb) shell readelf -h <file>
 ```
 ### Debugging Commands
-```
+```bash
 (gdb) info proc mappings        ; Show memory space
 (gdb) info functions            ; Show available functions
 (gdb) info variables            ; Show available variables
 ```
 ### Hooking
-```
+```bash
 (gdb) define hook-stop
 > print/x $eax
 > print/x $ebx
