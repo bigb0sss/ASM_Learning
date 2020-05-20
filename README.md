@@ -11,9 +11,15 @@ $ ld -o <file> <file>.o
 ```
 $ cat /usr/include/i386-linux-gnu/asm/unistd_32.h 
 ```
-
+<br />
 ## GDB
 ### Finding Entry Points
 ```
 (gdb) shell readelf -h <file>
+```
+### Debugging Commands
+```
+(gdb) info proc mappings        ; Show memory space
+(gdb) info functions            ; Show available functions
+(gdb) info variables            ; Show available variables
 ```
