@@ -24,3 +24,15 @@ $ cat /usr/include/i386-linux-gnu/asm/unistd_32.h
 (gdb) info functions            ; Show available functions
 (gdb) info variables            ; Show available variables
 ```
+### Hooking
+```
+(gdb) define hook-stop
+> print/x $eax
+> print/x $ebx
+> print/x $ecx
+> print/x $edx
+> x/8xb &data
+> disassemble $eip,+5
+> end
+```
+```
