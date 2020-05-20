@@ -1,9 +1,5 @@
 # b0ssTheASM 🥂
 
-<p align="center">
-  <img width="%100" height="50" src="https://github.com/bigb0sss/b0ssTheASM/blob/master/asm.png">
-</p>
-
 ## x86 (32-bit)
 
 ### Compiling ASM in x86
