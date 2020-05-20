@@ -2,7 +2,7 @@
   <img src="https://github.com/bigb0sss/b0ssTheASM/blob/master/asm.png">
 </p>
 
-## x86 (32-bit)
+## [*] x86 (32-bit)
 
 ### Compiling ASM in x86
 ```
