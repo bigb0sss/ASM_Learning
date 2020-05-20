@@ -5,7 +5,7 @@
 ## x86 (32-bit)
 
 ### Compiling ASM in x86
-```
+```bash
 $ nasm -f elf32 -o <file>.o <file>.asm
 $ ld -o <file> <file>.o
 ```
