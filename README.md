@@ -1,4 +1,4 @@
-# b0ssTheASM 🥃
+# b0ssTheASM 🥂
 
 ## x86 (32-bit)
 
