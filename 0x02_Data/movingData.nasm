@@ -1,6 +1,9 @@
-; playingData.nasm
+; movingData.nasm
 ;
 ; Author: bigb0ss
+;
+; [*] This is just example of mine. You can modify anything to play the data.
+
 
 ; Global Entry Point
 
