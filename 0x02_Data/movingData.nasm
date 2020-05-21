@@ -1,8 +1,10 @@
 ; movingData.nasm
 ;
-; Author: bigb0ss
+; Author          : bigb0ss
+; Created date    : 05/19/2020
+; Last update     : 05/19/2020
 ;
-; [*] This is just example of mine. You can modify anything to play the data.
+; Description     : This is just example of mine. You can modify anything to play the data.
 
 
 ; Global Entry Point
