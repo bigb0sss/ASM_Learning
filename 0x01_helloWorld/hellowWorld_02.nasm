@@ -1,4 +1,4 @@
-; Executable name : helloWorld_2
+; Executable name : helloWorld_02
 ; Version         : 1.0
 ; Created date    : 05/20/2020
 ; Last update     : 05/20/2020
