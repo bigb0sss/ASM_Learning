@@ -1,9 +1,9 @@
-; Executable name : print_bigb0ss_3times
+; Executable name : print_bigb0ss_3times_loop
 ; Version         : 1.0
-; Created date    : 05/25/2020
-; Last update     : 05/25/2020
+; Created date    : 05/28/2020
+; Last update     : 05/28/2020
 ; Author          : bigb0ss
-; Description.    : Print "bigb0ss" x3 times
+; Description.    : Print "bigb0ss" x3 times with ECX + Loop
 ;
 ; Purpose:
 
@@ -14,10 +14,10 @@ _start:
         jmp entry
         
 entry:
-        mov eax, 0x3        ; Setting EAX to 0x3 for our loop purposes
+        mov ecx, 0x3        ; Setting ECX our loop purposes
         
 print:
-        push eax            ; Storing the current state of EAX
+        push ecx            ; Storing the current state of ECX
         
         mov eax, 0x4        ; Calling write() syscall
         mov ebx, 1
@@ -25,9 +25,8 @@ print:
         mov edx, mlen
         int 0x80
         
-        pop eax             ; Restoring the EAX state
-        dec eax             ; Decrementing by 1
-        jnz print           ; If the EAX is not equal to 0, then go back to print:
+        pop ecx             ; Restoring the ECX state
+        loop print          ; Looping through ECX value until it become "0"
         
         mov eax, 0x1        ; Calling exit() syscall
         mov ebx, 0xa
