@@ -1,6 +1,11 @@
-; 0x01 - helloWorld.asm
-:
-; Author : bigb0ss
+; Executable name : helloWorld_01
+; Version         : 1.0
+; Created date    : 05/20/2020
+; Last update     : 05/20/2020
+; Author          : bigb0ss
+; Description.    : Print "Hello World!"
+;
+;
 
 ; Global Entry Point
 global _start   
