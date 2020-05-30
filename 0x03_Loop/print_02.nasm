@@ -1,4 +1,4 @@
-; Executable name : print_bigb0ss_3times_loop
+; Executable name : print_02_loop
 ; Version         : 1.0
 ; Created date    : 05/28/2020
 ; Last update     : 05/28/2020
