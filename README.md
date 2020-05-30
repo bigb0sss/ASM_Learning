@@ -33,7 +33,8 @@ $ cat /usr/include/i386-linux-gnu/asm/unistd_32.h
 > print/x $ebx                  ; Prints the current EBX register in hex
 > print/x $ecx                  ; Prints the current ECX register in hex
 > print/x $edx                  ; Prints the current EDX register in hex
-> x/8xb &data                   ; Examine next 8 values at data segments in hex byte by byte
+> x/8xb &data                   ; Examine next 8 hex values at data location byte-by-byte
+> x/8cb &data                   ; Examine next 8 character values at data location byte-by-byte
 > disassemble $eip,+5           ; Disassemble next 5 values from the current EIP register
 > end
 
