@@ -16,12 +16,12 @@ _start:
 	int 0x80
 ```
 ### 2) Compile the exit.nasm
-```asm
+```bash
 $ nasm -f elf32 -o exit exit.nasm
 $ ld -o exit exit.o
 ```
 ### 3) objdump the exit program
-```asm
+```bash
 $ objdump -d exit -M intel		; -M intel: Intel format
 
 exit:     file format elf32-i386
@@ -48,4 +48,7 @@ main() {
 
 }
 ```
+--> But the above shellcode wouldn't be useful since it contains too many null bytes
+
+
 
