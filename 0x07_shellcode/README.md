@@ -34,3 +34,18 @@ Disassembly of section .text:
  804806a:	cd 80                	int    0x80
 ```
 ### 4) Copy and Paste the opcode to the skeleton C program
+```c
+#include<stdio.h>
+#include<string.h>
+
+unsigned char shellcode[] = 
+"\xb8\x01\x00\x00\x00\xbb\x0a\x00\x00\x00\xcd\x80";
+
+main() {
+        printf("[+] Shellcode Length: %d\n", strlen(shellcode));
+        int (*ret)() = (int(*)())shellcode;
+        ret();        
+
+}
+```
+
