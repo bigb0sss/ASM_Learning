@@ -50,5 +50,26 @@ main() {
 ```
 --> But the above shellcode wouldn't be useful since it contains too many null bytes
 
+### 5) Null byte avoidance
+```asm
+; Simple Exit Program (Adding XOR to avoid null bytes)
 
+global _start			
 
+section .text
+_start:
+
+	xor eax, eax		; Set EAX to zero
+	mov al, 0x1		; Adding "1" to AL (= lower byte of EAX)
+	xor ebx, ebx		; Set EBX to zero
+	mov bl, 0xa		; Adding "10" to BL (= lower byte of EBX)
+	int 0x80
+```
+
+### 6) Extracting shellcode from the compiled file
+```bash
+# This will only outputs the shellcode with copy and paste friendly format
+# https://www.commandlinefu.com/commands/view/6051/get-all-shellcode-on-binary-file-from-objdump
+
+$ objdump -d ./PROGRAM | grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1-6 -d' '|tr -s ' '|tr '\t' ' '|sed 's/ $//g'|sed 's/ /\\x/g'|paste -d '' -s |sed 's/^/"/'|sed 's/$/"/g'
+```
