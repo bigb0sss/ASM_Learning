@@ -20,28 +20,28 @@ _start:
 
 shellcode: 
 
-	  ; write() syscall
-    xor eax, eax                          ; Set EAX to zero
+	; write() syscall
+    	xor eax, eax                          ; Set EAX to zero
   	mov al, 0x4                           ; Adding "4" to AL (= lower byte of EAX)
   	xor ebx, ebx                          ; Set EBX to zero
   	mov bl, 0x1                           ; Adding "1" to AL (= lower byte of EBX)
 
-	  pop ecx                               ; POP the ECX value which is "message"
+	pop ecx                               ; POP the ECX value which is "message"
 
   	xor edx, edx                          ; Set EDX to zero
   	mov dl, 13                            ; Adding "13" to AL (= lower byte of EDX)
-	  int 0x80
+	int 0x80
 
 
-    ; exit() syscall
-	  xor eax, eax		                      ; Set EAX to zero
+    	; exit() syscall
+	xor eax, eax		                      ; Set EAX to zero
   	mov al, 0x1	                        	; Adding "1" to AL (= lower byte of EAX)
   	xor ebx, ebx	                      	; Set EBX to zero
   	mov bl, 0xa		                        ; Adding "10" to BL (= lower byte of EBX)
-	  int 0x80
+	int 0x80
 
 call_shellcode:
 
-	  call shellcode                        ; Calling "shellcode"
+	call shellcode                        ; Calling "shellcode"
   	message: db "Hello World!", 0xA       ; When call gets called, it puts this "message' onto the next POP register
    
