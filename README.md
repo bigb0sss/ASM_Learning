@@ -50,6 +50,6 @@ $ cat /usr/include/i386-linux-gnu/asm/unistd_32.h
 
 ## References/Resources
 * Intel IA-32 Manuel - [Intel® 64 and IA-32 ArchitecturesSoftware Developer’s Manual](https://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-instruction-set-reference-manual-325383.pdf)
-* Shellcoding - http://www.shell-storm.org \r\n
-              - http://exploit.db.com \r\n
-              - http://www.projectshellcode.com \r\n
+* Shellcoding - http://www.shell-storm.org&nbsp;
+              - http://exploit.db.com&nbsp;
+              - http://www.projectshellcode.com&nbsp;
