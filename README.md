@@ -8,6 +8,9 @@
 ```bash
 $ nasm -f elf32 -o <file>.o <file>.asm
 $ ld -o <file> <file>.o
+
+# If you want to use libc instead of syscalls, use GCC
+$ gcc -o <file> <file>.o
 ```
 ### Finding Syscalls
 ```bash
