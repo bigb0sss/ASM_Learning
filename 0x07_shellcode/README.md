@@ -2,7 +2,7 @@
 
 ## Shellcoding Process
 
-# 1) Create an exit.nasm
+### 1) Create an exit.nasm
 ```asm
 ; Simple Exit Program
 
@@ -15,12 +15,12 @@ _start:
 	mov ebx, 10
 	int 0x80
 ```
-# 2) Compile the exit.nasm
+### 2) Compile the exit.nasm
 ```asm
 $ nasm -f elf32 -o exit exit.nasm
 $ ld -o exit exit.o
 ```
-# 3) objdump the exit program
+### 3) objdump the exit program
 ```asm
 $ objdump -d exit -M intel		; -M intel: Intel format
 
@@ -33,4 +33,4 @@ Disassembly of section .text:
  8048065:	bb 0a 00 00 00       	mov    ebx,0xa
  804806a:	cd 80                	int    0x80
 ```
-# 4) Copy and Paste the opcode to the skeleton C program
+### 4) Copy and Paste the opcode to the skeleton C program
