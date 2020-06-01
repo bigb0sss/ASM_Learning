@@ -2,7 +2,7 @@
 
 ## Shellcoding Process
 
-### 1) Create an exit.nasm
+1) Create an exit.nasm
 ```asm
 ; Simple Exit Program
 
