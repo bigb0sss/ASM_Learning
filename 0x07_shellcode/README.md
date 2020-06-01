@@ -78,3 +78,12 @@ $ objdump -d ./PROGRAM | grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1-6 -
 ```bash
 $ gcc -fno-stack-protector -z execstack exit.c -o exit
 ```
+<br />
+
+## Making Strings in Reverse Order
+```python
+$ python
+>>> code = 'Hello World\n'
+>>> code[::-1]
+>>> code[::-1].encode('hex')
+```
