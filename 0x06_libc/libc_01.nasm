@@ -13,7 +13,7 @@ extern printf
 extern exit
 
 
-global main                 ; For libc, use the starting point as "main" instead of "_start"
+global main                  ; For libc, use the starting point as "main" instead of "_start"
 
 section .text
 main
