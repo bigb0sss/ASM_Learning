@@ -15,7 +15,7 @@ section .text
 
 _start:
 
-	jmp short call_shellcode                ; Short JMP to "call_shellcode"
+	jmp short call_shellcode              ; Short JMP to "call_shellcode"
 
 
 shellcode: 
