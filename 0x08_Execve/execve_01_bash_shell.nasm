@@ -46,11 +46,11 @@ shellcode:
         lea edx, [esi +14]
         
       	; exit() syscall
-	      xor eax, eax		              ; Set EAX to zero
-  	    mov al, 0x1	                  ; Adding "1" to AL (= lower byte of EAX)
-  	    xor ebx, ebx	                ; Set EBX to zero
-  	    mov bl, 0xa		                ; Adding "10" to BL (= lower byte of EBX)
-	      int 0x80
+	xor eax, eax		              ; Set EAX to zero
+  	mov al, 0x1	                      ; Adding "1" to AL (= lower byte of EAX)
+  	xor ebx, ebx	                      ; Set EBX to zero
+  	mov bl, 0xa		              ; Adding "10" to BL (= lower byte of EBX)
+	int 0x80
         
         
         
