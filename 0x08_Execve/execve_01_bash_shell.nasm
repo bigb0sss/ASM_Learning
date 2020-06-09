@@ -26,15 +26,16 @@ section .text
 
 _start:
 
-        jmp short call_shellcode
+        jmp short call_shellcode	      ; Doing a short jump to call "call_shellcode" label 
         
 
 shellcode:
         
-        pop esi
+        pop esi				      ; POPing "/bin/bashABBBBCCCC" on the stack at ESI register
         
+	
         ; Preparing for values to utilize for further execve layout usage
-        xor ebx, ebx
+        xor ebx, ebx			      ; 
         mov byte [esi +9], bl
         mov dword [esi +10], esi
         mov dword [esi +14], ebx
@@ -51,8 +52,12 @@ shellcode:
   	xor ebx, ebx	                      ; Set EBX to zero
   	mov bl, 0xa		              ; Adding "10" to BL (= lower byte of EBX)
 	int 0x80
-        
-        
+
+
+call_shellcode:
+
+	call shellcode
+	message db "/bin/bashABBBBCCCC"
         
         
         
