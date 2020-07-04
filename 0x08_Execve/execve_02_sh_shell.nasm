@@ -31,11 +31,11 @@ _start:
 
 shellcode:
         
-        pop esi				      ; POPing "/bin/bashABBBBCCCC" on the stack at ESI register
+        pop esi				      ; POPing "/bin/shABBBBCCCC" on the stack at ESI register
         
 	
         ; Preparing for values to utilize for further execve layout usage
-        xor ebx, ebx			      ; Making the EBX value to 0 for Null terminator for /bin/bash
+        xor ebx, ebx			      ; Making the EBX value to 0 for Null terminator for /bin/sh
         mov byte [esi +7], bl		      ; Moving 0 to "A" location
         mov dword [esi +8], esi	      	      ; Moving ESI address (DWORD) to "BBBB" location
         mov dword [esi +12], ebx	      ; Moving 0s to "CCCC" address
