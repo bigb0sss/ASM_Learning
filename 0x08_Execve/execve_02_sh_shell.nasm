@@ -46,7 +46,7 @@ shellcode:
         lea ecx, [esi +8]		      ; Moving address of ESI to ECX (= argv[])
         lea edx, [esi +12]		      ; Moving 0s to EDX (= evnp[])
         
-      	; exit() syscall
+      	; syscall()
 	xor eax, eax		              ; Set EAX to zero
   	mov al, 0xb	                      ; Adding "11" to AL (= lower byte of EAX)
 	int 0x80
