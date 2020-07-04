@@ -1,4 +1,4 @@
-; Executable name : execve_01_bash_shell
+; Executable name : execve_02_sh_shell
 ; Version         : 1.0
 ; Created date    : 07/02/2020
 ; Last update     : 07/02/2020
