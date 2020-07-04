@@ -36,15 +36,15 @@ shellcode:
 	
         ; Preparing for values to utilize for further execve layout usage
         xor ebx, ebx			      ; Making the EBX value to 0 for Null terminator for /bin/bash
-        mov byte [esi +9], bl		      ; Moving 0 to "A" location
-        mov dword [esi +10], esi	      ; Moving ESI address (DWORD) to "BBBB" location
-        mov dword [esi +14], ebx	      ; Moving 0s to "CCCC" address
+        mov byte [esi +7], bl		      ; Moving 0 to "A" location
+        mov dword [esi +8], esi	      	      ; Moving ESI address (DWORD) to "BBBB" location
+        mov dword [esi +12], ebx	      ; Moving 0s to "CCCC" address
 
 
         ; Placing each value for execve usage
         lea ebx, [esi]			      ; Moving ESI to EBX location (= filename)
-        lea ecx, [esi +10]		      ; Moving address of ESI to ECX (= argv[])
-        lea edx, [esi +14]		      ; Moving 0s to EDX (= evnp[])
+        lea ecx, [esi +8]		      ; Moving address of ESI to ECX (= argv[])
+        lea edx, [esi +12]		      ; Moving 0s to EDX (= evnp[])
         
       	; exit() syscall
 	xor eax, eax		              ; Set EAX to zero
@@ -55,7 +55,7 @@ shellcode:
 call_shellcode:
 
 	call shellcode
-	message db "/bin/bashABBBBCCCC"
+	message db "/bin/shABBBBCCCC"
         
         
         
