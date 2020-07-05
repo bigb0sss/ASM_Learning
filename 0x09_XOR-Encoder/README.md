@@ -4,3 +4,6 @@
 ```ASM
 (A XOR B) XOR B = A
 ```
+
+### XOR Encoding Process
+  #### 1)
