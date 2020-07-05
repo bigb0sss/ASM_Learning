@@ -1,4 +1,4 @@
-; Executable name : xor_01_decoder_loop
+; Executable name : xor_01_decoder_loop1
 ; Version         : 1.0
 ; Created date    : 07/03/2020
 ; Last update     : 07/03/2020
