@@ -29,6 +29,7 @@ $ cat /usr/include/i386-linux-gnu/asm/unistd_32.h
 (gdb) info functions            ; Show available functions
 (gdb) info variables            ; Show available variables
 (gdb) prints $eflags            ; Prints the current Eflags
+(gdb) break *&code              ; Breat at the beginning of the shellcode
 ```
 ### Hooking
 ```bash
