@@ -101,9 +101,7 @@ def objdump(ob):
     print "[+] Creating File: shellcode.c"
 
     # Compiling shellcode.c
-    print "[*] gcc warning (if any):\n"
-    subprocess.call(["gcc", "-fno-stack-protector", "-z", "execstack", filename, "-o", "shellcode"])
-    print ""
+    subprocess.call(["gcc", "-fno-stack-protector", "-z", "execstack", filename, "-o", "shellcode", "-w"])
     print "[+] Compiling Executable: shellcode"
     print "[+] Enjoy!"
 
