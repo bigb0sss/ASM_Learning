@@ -1,7 +1,7 @@
 #!/usr/bin/python
-# Version         : 1.0
+# Version         : v1.1
 # Created date    : 09/15/2020
-# Last update     : 09/15/2020
+# Last update     : 04/21/2020
 # Author          : bigb0ss
 # Description     : ASM Compiler to Executable
 # Example         : ./compilerX86.py -f <filename>
@@ -74,8 +74,33 @@ def objdump(ob):
             c += "\\x" + byte.decode("utf-8")
 
         shellcode += c
-    out = shellcode
-    print '[+] Shellcode: ' + '"' + out + '"'
+    out1 = shellcode
+    print '[+] Shellcode: ' + '"' + out1 + '"'
+
+    shellcode2 = ""
+
+    for i in out:
+        i = i.strip()
+        
+        tab = i.split('\t')
+        if (len(tab) < 2):
+            continue
+        bytes = tab[1].strip()
+
+        instruction = "."
+        if (len(tab) == 3):
+            instruction = tab[2].strip().decode("utf-8")
+
+        bytes = bytes.split(' ')
+        c = ""
+        
+        for byte in bytes:
+            c += "0x" + byte.decode("utf-8") + ","
+
+        shellcode2 += c
+    out2 = shellcode2
+    print '[+] ASM code: ' + out2[:-1] 
+
 
     # Adding shellcode to shellcode.c
     outShellcode = ''
