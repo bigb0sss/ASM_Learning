@@ -108,7 +108,7 @@ def objdump(ob):
     outShellcode+= '#include<string.h>\n'
     outShellcode+= '\n'
     outShellcode+= 'unsigned char code[] = \ \n'
-    outShellcode+= '"{0}";'.format(out)
+    outShellcode+= '"{0}";'.format(out1)
     outShellcode+= '\n'
     outShellcode+= 'main()\n' 
     outShellcode+= '{\n'
